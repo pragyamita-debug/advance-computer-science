@@ -24,11 +24,10 @@
   height: 100%;
   object-fit: cover;
   object-position: 40% 60%;
-  opacity: 0.9;
   animation: photo-in 1.6s var(--ease-out) both, slow-zoom 24s 1.6s ease-in-out infinite alternate;
 }
-@keyframes photo-in { from { opacity: 0; transform: scale(1.08); } }
-@keyframes slow-zoom { to { transform: scale(1.05) translate(-1%, -1%); } }
+@keyframes photo-in { from { opacity: 0; transform: scale(1.04); } }
+@keyframes slow-zoom { to { transform: scale(1.02) translate(-0.5%, -0.5%); } }
 
 /* the desk lamp glow, breathing slowly over the board */
 .hero__glow {

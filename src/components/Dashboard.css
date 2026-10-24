@@ -86,7 +86,7 @@
   color: #fff;
 }
 .why__sky { position: absolute; z-index: -1; inset: 0; pointer-events: none; }
-.why__earth { position: absolute; left: -10%; bottom: -8px; width: 120%; max-width: none; height: 150px; object-fit: cover; object-position: 50% 0; opacity: 0.95; -webkit-mask: linear-gradient(180deg, transparent, #000 35%); mask: linear-gradient(180deg, transparent, #000 35%); }
+.why__earth { position: absolute; left: -10%; bottom: -8px; width: 120%; max-width: none; height: 150px; object-fit: cover; object-position: 50% 0; -webkit-mask: linear-gradient(180deg, transparent, #000 35%); mask: linear-gradient(180deg, transparent, #000 35%); }
 /* the sun climbs out from behind the curve of the earth */
 .why__sun {
   position: absolute;

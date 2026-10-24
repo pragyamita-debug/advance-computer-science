@@ -84,6 +84,6 @@ src/
   styles/global.css       colour tokens, type, buttons
 ```
 
-The photos in `src/assets/photos/` were cut from the design mock-up (printed text removed) and enlarged 4×
-with an EDSR super-resolution network plus a light sharpen. The mock-up was small, so some are soft —
-swap in higher-resolution photos with the same file names for the sharpest page.
+The photos in `src/assets/photos/` were cut from the design mock-up (printed text removed) and enlarged with
+Real-ESRGAN (x4plus, two passes for the smallest crops), then sized to what each slot shows on a high-density
+screen. For the sharpest page, swap in original high-resolution photos with the same file names.
