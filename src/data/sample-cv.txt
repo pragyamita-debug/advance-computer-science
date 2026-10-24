@@ -1,0 +1,64 @@
+ALEX CHEN
+Embedded Systems Engineer | IoT & Product Development
+Engineering ideas into reliable, real-world products.
+alex.chen@example.com | +1 312 555 0187 | Chicago, USA | linkedin.com/in/alex-chen-example | github.com/alex-chen-example
+
+PROFILE
+Embedded engineer with 6+ years taking hardware from first sketch to production: PCB design, firmware, IoT connectivity and testing. I like small teams, clear specs and products that survive the real world.
+
+EXPERIENCE
+Senior Embedded Engineer — Example Devices Lab | Mar 2022 – Present
+• Lead firmware for a family of ESP32 sensor boards shipped to 40+ customers.
+• Cut board cost by 18% with a redesigned power stage and component swap.
+• Built the over-the-air update pipeline used across all connected products.
+
+Embedded Engineer — Northfield Automation | Jul 2019 – Feb 2022
+• Wrote motor-control firmware for industrial robot arms (STM32, CAN).
+• Designed test fixtures that brought factory test time from 9 to 3 minutes.
+
+Junior Hardware Engineer — Riverside Electronics | Aug 2018 – Jun 2019
+• Schematic capture, layout reviews and prototype bring-up.
+
+EDUCATION
+M.Tech in Embedded Systems — University of Example | 2018
+B.E. in Electronics Engineering — Example Institute of Technology | 2016
+
+SKILLS
+Embedded C, PCB Design, Firmware Development, IoT, ESP32, STM32, RTOS, Python, Altium Designer, Product Testing
+
+PROJECTS
+Multi-Sensor ESP32 Board
+• Low-power environmental sensor board with LoRa and GPS.
+• Tech: ESP32, GPS, LoRa, IMU
+Voice Speaker Prototype
+• Smart speaker with on-device wake word and Wi-Fi audio streaming.
+• Tech: ESP32-S3, Audio, AI
+Solar Charging Dock
+• Weatherproof solar dock that charges field sensors through the winter.
+• Tech: Solar, Battery, USB-C
+LTE-M GPS Tracker
+• Asset tracker with a two-year battery life on LTE-M.
+• Tech: BG770A, GNSS, IoT
+Farm Irrigation Controller
+• Soil-moisture driven irrigation valves controlled from a phone.
+• Tech: LoRaWAN, Sensors, App
+
+ACHIEVEMENTS
+Shipped 12 products from prototype to production
+Patent pending for a low-power sensor wake-up circuit
+Hackathon winner, Regional IoT Challenge 2021
+
+CERTIFICATIONS
+IPC CID Certified Designer
+Certified LabVIEW Associate Developer
+
+GOALS
+Goal: Lead hardware for a connected-product team (within three years)
+Next Step: Bring an edge-AI sensor from prototype to production
+Timeline: Target: 2028
+
+MOTTO
+Your idea. Our engineering.
+
+INTERESTS
+Drones & robotics, Smart devices, Automotive tech
