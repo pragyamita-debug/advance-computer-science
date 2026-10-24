@@ -19,13 +19,7 @@ const SIDE = [
   { img: robot, icon: 'factory' as IconName },
 ];
 
-interface Props {
-  resume: Resume;
-  isExample: boolean;
-  onUpload: () => void;
-}
-
-export function Hero({ resume, isExample, onUpload }: Props) {
+export function Hero({ resume }: { resume: Resume }) {
   const reduced = useReducedMotion();
   const [slide, setSlide] = useState(0);
   const [role] = splitHeadline(resume.headline);
@@ -88,15 +82,9 @@ export function Hero({ resume, isExample, onUpload }: Props) {
           </h1>
           {intro && <p className="hero__intro">{intro}</p>}
           <div className="hero__actions">
-            {isExample ? (
-              <button className="pill" onClick={onUpload}>
-                Upload your CV <Icon name="arrowRight" size={15} />
-              </button>
-            ) : (
-              <a className="pill" href={resume.email ? `mailto:${resume.email}` : '#contact'}>
-                Get in touch <Icon name="arrowRight" size={15} />
-              </a>
-            )}
+            <a className="pill" href={resume.email ? `mailto:${resume.email}` : '#contact'}>
+              Get in touch <Icon name="arrowRight" size={15} />
+            </a>
             <a className="hero__watch" href="#projects">
               <span className="hero__play">
                 <Icon name="play" size={13} />

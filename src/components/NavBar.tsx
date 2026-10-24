@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Icon, type IconName } from './Icon';
+import { Icon } from './Icon';
 import { Logo } from './Logo';
 
 export const NAV = [
@@ -29,15 +29,9 @@ interface Props {
   tagline: string;
   email?: string;
   active: string;
-  isExample: boolean;
-  onUploadNew: () => void;
-  onEdit: () => void;
-  onDownloadCv: () => void;
-  onReset: () => void;
 }
 
-export function NavBar({ name, tagline, email, active, isExample, onUploadNew, onEdit, onDownloadCv, onReset }: Props) {
-  const [menu, setMenu] = useState(false);
+export function NavBar({ name, tagline, email, active }: Props) {
   const [mobile, setMobile] = useState(false);
   const [search, setSearch] = useState(false);
   const [term, setTerm] = useState('');
@@ -51,16 +45,10 @@ export function NavBar({ name, tagline, email, active, isExample, onUploadNew, o
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     const onDown = (e: PointerEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setMenu(false);
-        setMobile(false);
-      }
+      if (ref.current && !ref.current.contains(e.target as Node)) setMobile(false);
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setMenu(false);
-        setSearch(false);
-      }
+      if (e.key === 'Escape') setSearch(false);
     };
     document.addEventListener('pointerdown', onDown);
     document.addEventListener('keydown', onKey);
@@ -75,12 +63,6 @@ export function NavBar({ name, tagline, email, active, isExample, onUploadNew, o
     if (search) input.current?.focus();
   }, [search]);
 
-  const actions: { icon: IconName; label: string; run: () => void }[] = [
-    { icon: 'upload', label: isExample ? 'Upload a CV' : 'Upload a new CV', run: onUploadNew },
-    { icon: 'edit', label: 'Edit details', run: onEdit },
-    { icon: 'download', label: isExample ? 'Download the sample CV' : 'Download the CV', run: onDownloadCv },
-  ];
-  if (!isExample) actions.push({ icon: 'refresh', label: 'Back to the example', run: onReset });
 
   return (
     <header ref={ref} className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
@@ -128,39 +110,9 @@ export function NavBar({ name, tagline, email, active, isExample, onUploadNew, o
               <Icon name="search" size={16} />
             </button>
           </form>
-
-          <div className="nav__pop">
-            <button className="nav__icon" aria-label="Dashboard options" aria-haspopup="menu" aria-expanded={menu} onClick={() => setMenu((m) => !m)}>
-              <Icon name="cog" size={16} />
-            </button>
-            {menu && (
-              <ul className="popover" role="menu">
-                {actions.map((a) => (
-                  <li key={a.label} role="none">
-                    <button
-                      role="menuitem"
-                      onClick={() => {
-                        setMenu(false);
-                        a.run();
-                      }}
-                    >
-                      <Icon name={a.icon} size={16} /> {a.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-
-          {isExample ? (
-            <button className="pill pill--sm nav__cta" onClick={onUploadNew}>
-              Upload CV <Icon name="arrowRight" size={14} />
-            </button>
-          ) : (
-            <a className="pill pill--sm nav__cta" href={email ? `mailto:${email}` : '#contact'}>
-              Get in touch <Icon name="arrowRight" size={14} />
-            </a>
-          )}
+          <a className="pill pill--sm nav__cta" href={email ? `mailto:${email}` : '#contact'}>
+            Get in touch <Icon name="arrowRight" size={14} />
+          </a>
           <button className="nav__icon nav__burger" aria-label="Open menu" aria-expanded={mobile} onClick={() => setMobile((m) => !m)}>
             <Icon name={mobile ? 'close' : 'menu'} size={16} />
           </button>

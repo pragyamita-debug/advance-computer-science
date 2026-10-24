@@ -1,10 +1,11 @@
 import type { Resume } from '../lib/types';
 
 /**
- * What the page shows before anyone uploads a CV: the full design, filled with
- * neutral placeholder text. Uploading a CV replaces every field below.
+ * Everything the dashboard shows comes from this object.
+ * Replace the placeholder values with real ones and the whole page updates —
+ * no other file needs to change.
  */
-export const placeholder: Resume = {
+export const profile: Resume = {
   name: 'Your Name',
   headline: 'Your Role | Your Specialism',
   tagline: 'One sentence about the work you do and the change you want it to make.',
@@ -16,7 +17,7 @@ export const placeholder: Resume = {
     github: 'https://github.com/',
   },
   summary:
-    'Two or three sentences about who you are, what you are curious about and the kind of work you want to do next. Upload a CV and this is replaced by your own profile.',
+    'Two or three sentences about who you are, what you are curious about and the kind of work you want to do next.',
   motto: 'Your idea. Our engineering.',
 
   experience: [

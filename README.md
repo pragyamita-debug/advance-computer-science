@@ -1,30 +1,33 @@
-# CV → Dashboard (Advanced Computer Science & Engineering)
+# Engineering Portfolio Dashboard
 
-Candidates upload a CV (PDF, DOCX or TXT) and get an animated portfolio dashboard in an engineering-lab
-style: night-navy hero with a dev board under a desk lamp, electric-blue accents, glass cards, real
+An animated portfolio dashboard in an engineering-lab style: night-navy hero with a dev board under a desk lamp, electric-blue accents, glass cards, real
 product and industry photos, and a sun rising over the curve of the earth.
 
-Everything runs in the browser. The CV is read client-side and never sent to a server.
+All the content lives in one file, `src/data/profile.ts`. It ships with neutral placeholder text
+(“Your Name”, “Your Role”, “Project One”…) — replace the values and the whole page updates.
 
 **Live site:** https://pragyamita-debug.github.io/advance-computer-science/ (after Pages is switched on — see below)
 
-## How it works
+## Making it yours
 
-0. **Example first** — the page opens on the full design filled with neutral placeholder text
-   (`src/data/placeholder.ts`: “Your Name”, “Your Role”, “Project One”…) and an **Upload CV** button.
-1. **Upload** — drag a CV onto the drop zone, or try the bundled sample (`src/data/sample-cv.txt`, a fictional embedded engineer).
-2. **Read** — PDF text comes from pdf.js, Word files from mammoth; both load only when needed.
-3. **Parse** — `src/lib/parseResume.ts` splits the text into sections and works out years of experience from
-   the date ranges, counting overlapping jobs once. `Tech: ESP32, GPS` lines under a project become its tag
-   chips; `Type: …` lines become its subtitle.
-4. **Review** — the candidate checks what was found and fixes anything before the dashboard is built.
-5. **Dashboard** — saved to `localStorage`; the gear menu can upload another CV, edit, download or go back to the example.
+Open `src/data/profile.ts` and edit the fields:
+
+| Field | Shown in |
+| --- | --- |
+| `name`, `headline` (`Role | Specialism`), `location`, `email`, `phone`, `links` | nav, hero, why panel, contact, footer |
+| `summary`, `tagline`, `motto` | hero, skills intro, why panel, the handwriting |
+| `skills`, `interests` | hero tag strip, side cards, domain cards, skill chips |
+| `experience` | career steps |
+| `education`, `certifications`, `achievements` | why panel, highlights slider, FAQ |
+| `projects` (with `tags`) | featured slider and Recent Work |
+| `goals` | call to action and FAQ |
+| `stats` | the counting numbers |
 
 ## What the dashboard shows
 
 | Part | Built from |
 | --- | --- |
-| Nav | chip logo, name, specialism, section links, expanding search (Enter jumps to and highlights the match), gear menu, **Upload CV** / **Get in touch** |
+| Nav | chip logo, name, specialism, section links, expanding search (Enter jumps to and highlights the match), **Get in touch** |
 | Hero | top five skills as the tag strip, name, role, first sentence of the summary, location / years / degree; the motto handwritten beside the board |
 | Featured card | the first four projects, auto-sliding with dots |
 | Three side cards | interests (or skills) with photos |
@@ -34,7 +37,7 @@ Everything runs in the browser. The CV is read client-side and never sent to a s
 | Recent work | project cards with tag chips; **View all** shows the rest |
 | Highlights | achievements and certifications in an auto-playing slider |
 | Have a project in mind? | the next goal, email and phone buttons over the summit photo |
-| FAQ | questions answered from the CV: specialism, tools, education, location, what’s next |
+| FAQ | questions answered from the profile: specialism, tools, education, location, what’s next |
 
 ## Animations
 
@@ -54,7 +57,7 @@ All motion respects `prefers-reduced-motion`.
 ```bash
 npm install
 npm run dev          # local dev server
-npm test             # parser tests (vitest)
+npm run typecheck    # TypeScript check
 npm run build        # static build in dist/
 npm run build:single # one self-contained index.html in dist-single/
 ```
@@ -64,28 +67,18 @@ npm run build:single # one self-contained index.html in dist-single/
 1. **Settings → Pages → Build and deployment → Source:** choose **GitHub Actions**.
 2. **Actions → Deploy to GitHub Pages → Run workflow** (it also runs on every push to `main`).
 
-## Writing a CV that parses well
-
-- Clear headings: **Experience**, **Education**, **Skills**, **Projects**, **Achievements**, **Certifications**.
-- Dates on the role line or the line after it: `Jan 2023 – Present`, `03/2021 - 06/2023`, `2019 - 2022`.
-- Under each project, an optional `Tech: …` line for the chips.
-- Optional extras: **Goals** (`Goal: …`, `Next Step: …`), **Motto** (handwritten in the hero), **Interests** (the side cards).
-- Text-based PDFs only — scanned images have no text to read.
-
 ## Project structure
 
 ```
 src/
-  App.tsx                 example → upload → reading → review → dashboard
-  data/placeholder.ts     the general example profile shown before any upload
-  data/sample-cv.txt      fictional sample CV
-  lib/                    extractText, parseResume (+ tests), dates, storage, types
+  App.tsx                 renders the dashboard from the profile
+  data/profile.ts         all the content (edit this)
+  lib/types.ts            the profile shape
   hooks/                  useCountUp, useScramble, useInView, usePointerGlow, useScrollSpy
   components/
-    NavBar.tsx            nav, search, gear menu
+    NavBar.tsx            nav + search
     Hero.tsx              hero copy + featured slider + side cards
     Sections.tsx          domains, why (earth + sunrise), career steps, recent work, highlights, CTA, FAQ, footer
-    UploadScreen.tsx, ReviewDialog.tsx
     GlowCard.tsx          the moving-border card
   assets/photos/          hero, drone, side cards, domains, products, summit, earth
   styles/global.css       colour tokens, type, buttons

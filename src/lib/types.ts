@@ -68,9 +68,3 @@ export interface Resume {
   };
 }
 
-export interface StoredProfile {
-  resume: Resume;
-  photo?: string;
-  file?: { name: string; type: string; dataUrl: string };
-  updatedAt: number;
-}
